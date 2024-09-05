@@ -5,24 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mateusz (Matt)'s Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #f0f0f0;
+        body, html {
             margin: 0;
             padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+            color: #f0f0f0;
             line-height: 1.6;
         }
 
+        /* Background Video Styling */
+        #background-video {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            filter: brightness(40%);
+        }
+
+        /* Header Styling */
         header {
             padding: 20px;
             text-align: center;
-            background-color: #1e1e1e;
-            border-bottom: 1px solid #333;
+        }
+
+        /* Avatar Styling */
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+            border: 5px solid #00ccff;
         }
 
         header h1 {
-            color: #ffcc00;
+            color: #00ccff;
             margin-bottom: 10px;
         }
 
@@ -30,19 +49,37 @@
             color: #ccc;
         }
 
+        /* Section Styling */
         section {
-            padding: 20px;
             margin: 20px auto;
             max-width: 800px;
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.8);
             border-radius: 8px;
+            box-shadow: 0px 0px 10px #000;
         }
 
-        h1 {
+        /* Foldable Section Header Styling */
+        .section-header {
+            cursor: pointer;
+            padding: 20px;
             font-size: 24px;
-            color: #ffcc00;
-            border-bottom: 2px solid #ffcc00;
-            padding-bottom: 10px;
+            color: #00ccff;
+            border-bottom: 2px solid #00ccff;
+        }
+
+        .section-header:hover {
+            background-color: rgba(0, 204, 255, 0.1);
+        }
+
+        /* Section Content Styling */
+        .section-content {
+            padding: 20px;
+            display: none; /* Hidden by default */
+        }
+
+        /* Default unfolded section */
+        .section-content.default-open {
+            display: block;
         }
 
         ul {
@@ -55,7 +92,7 @@
         }
 
         a {
-            color: #ffcc00;
+            color: #00ccff;
             text-decoration: none;
         }
 
@@ -66,12 +103,12 @@
         footer {
             text-align: center;
             padding: 10px;
-            background-color: #1e1e1e;
+            background-color: rgba(30, 30, 30, 0.8);
             border-top: 1px solid #333;
         }
 
         footer a {
-            color: #ffcc00;
+            color: #00ccff;
             text-decoration: none;
         }
 
@@ -81,49 +118,74 @@
     </style>
 </head>
 <body>
+    <!-- Background video -->
+    <video autoplay muted loop id="background-video">
+        <source src="steam_background.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+
     <header>
+        <!-- Avatar -->
+        <img src="mbnq_avatar.png" alt="Avatar" class="avatar">
         <h1>Hi, I'm Mateusz (Matt)</h1>
         <p>I've been playing games since 1996, focusing particularly on cooperative and simulation games. Additionally, I'm a musician (you can find my music below). I'm also passionate about electronics and game modding. Over the years, I've dedicated significant time to creating mods for various games and hosting gameservers. If you need anything, feel free to reach out to me on <a href="https://steamcommunity.com/">Steam</a> (please send an invite first).</p>
     </header>
 
+    <!-- About Me Section (Default Unfolded) -->
     <section>
-        <h1>About me</h1>
-        <ul>
-            <li><a href="https://mbnq.pl/music/">Oktafonika (my music)</a></li>
-            <li><a href="https://mbnq.pl/join">KF3 Discord</a></li>
-            <li><a href="https://github.com/mbnq">GitHub</a></li>
-            <li><a href="https://www.youtube.com/@cybernetized">YouTube (my shorts)</a></li>
-            <li><a href="https://www.youtube.com/user/mbnqpl">YouTube (my game videos)</a></li>
-            <li><a href="https://www.moddb.com/mods/cc-brute-force">ModDB</a></li>
-            <li><a href="https://www.nexusmods.com/commandandconquerredalert2/mods/138">NexusMods</a></li>
-            <li><a href="https://www.tiktok.com/@cybernetized/">TikTok</a></li>
-            <li><a href="https://www.reddit.com/user/mbnq/">Reddit</a></li>
-            <li><a href="https://www.instagram.com/mbnqpl/">Instagram</a></li>
-        </ul>
+        <div class="section-header" onclick="toggleSection('about-content')">About me</div>
+        <div id="about-content" class="section-content default-open">
+            <ul>
+                <li><a href="https://mbnq.pl/music/">Oktafonika (my music)</a></li>
+                <li><a href="https://mbnq.pl/join">KF3 Discord</a></li>
+                <li><a href="https://github.com/mbnq">GitHub</a></li>
+                <li><a href="https://www.youtube.com/@cybernetized">YouTube (my shorts)</a></li>
+                <li><a href="https://www.youtube.com/user/mbnqpl">YouTube (my game videos)</a></li>
+                <li><a href="https://www.moddb.com/mods/cc-brute-force">ModDB</a></li>
+                <li><a href="https://www.nexusmods.com/commandandconquerredalert2/mods/138">NexusMods</a></li>
+                <li><a href="https://www.tiktok.com/@cybernetized/">TikTok</a></li>
+                <li><a href="https://www.reddit.com/user/mbnq/">Reddit</a></li>
+                <li><a href="https://www.instagram.com/mbnqpl/">Instagram</a></li>
+            </ul>
+        </div>
     </section>
 
+    <!-- PC Section (Default Folded) -->
     <section>
-        <h1>PC</h1>
-        <ul>
-            <li><a href="https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x">AMD Ryzen 5 5600X</a> (<a href="https://www.bequiet.com/en/cpucooler/pure-rock/795">Pure Rock 150W</a>)</li>
-            <li><a href="https://www.kingston.com/poland/pl/solutions/gaming">Kingston HyperX Predator, DDR4, 64GB, 3200MHz, CL16</a></li>
-            <li><a href="http://www.gigabyte.pl/products/page/mb/X570-AORUS-ELITE-rev-10">Gigabyte X570 AORUS ELITE</a></li>
-            <li><a href="https://www.gigabyte.com/Graphics-Card/GV-N407TWF3OC-12GD#kf">Gigabyte RTX 4070</a></li>
-            <li><a href="https://www.bequiet.com/en/powersupply/1359">be quiet! Straight Power 11 750W</a></li>
-            <li><a href="https://www.razer.com/eu-en/gaming-keyboards/Razer-Ornata-Chroma/RZ03-02040600-R3N1">Razer Ornata Chroma</a></li>
-            <li><a href="https://steelseries.com/gaming-mice/rival-600">SteelSeries Rival 600</a></li>
-            <li><a href="https://www.xbox.com/pl-PL/accessories/controllers/elite-wireless-controller-series-2">Xbox Elite Series 2</a></li>
-            <li><a href="https://www.adam-audio.com/en/t-series/t7v/">Adam Audio T7V</a></li>
-            <li><a href="https://m-audio.com/products/view/sbx10">M-Audio SBX-10</a></li>
-            <li><a href="https://mackie.com/products/onyx-usb-audio-interfaces">Mackie Onyx Producer 2-2</a></li>
-            <li><a href="https://global.sennheiser-hearing.com/products/hd-599-se">Sennheiser hd599SE</a></li>
-            <li><a href="https://en-de.sennheiser.com/audio-headphones-high-end-hd-558">Sennheiser hd558</a></li>
-            <li><a href="https://www.amazon.com/Microphone-Condenser-Recording-Streaming-669B/dp/B06XCKGLTP">FIFINE K669B</a></li>
-        </ul>
+        <div class="section-header" onclick="toggleSection('pc-content')">PC</div>
+        <div id="pc-content" class="section-content">
+            <ul>
+                <li><a href="https://www.amd.com/en/products/cpu/amd-ryzen-5-5600x">AMD Ryzen 5 5600X</a> (<a href="https://www.bequiet.com/en/cpucooler/pure-rock/795">Pure Rock 150W</a>)</li>
+                <li><a href="https://www.kingston.com/poland/pl/solutions/gaming">Kingston HyperX Predator, DDR4, 64GB, 3200MHz, CL16</a></li>
+                <li><a href="http://www.gigabyte.pl/products/page/mb/X570-AORUS-ELITE-rev-10">Gigabyte X570 AORUS ELITE</a></li>
+                <li><a href="https://www.gigabyte.com/Graphics-Card/GV-N407TWF3OC-12GD#kf">Gigabyte RTX 4070</a></li>
+                <li><a href="https://www.bequiet.com/en/powersupply/1359">be quiet! Straight Power 11 750W</a></li>
+                <li><a href="https://www.razer.com/eu-en/gaming-keyboards/Razer-Ornata-Chroma/RZ03-02040600-R3N1">Razer Ornata Chroma</a></li>
+                <li><a href="https://steelseries.com/gaming-mice/rival-600">SteelSeries Rival 600</a></li>
+                <li><a href="https://www.xbox.com/pl-PL/accessories/controllers/elite-wireless-controller-series-2">Xbox Elite Series 2</a></li>
+                <li><a href="https://www.adam-audio.com/en/t-series/t7v/">Adam Audio T7V</a></li>
+                <li><a href="https://m-audio.com/products/view/sbx10">M-Audio SBX-10</a></li>
+                <li><a href="https://mackie.com/products/onyx-usb-audio-interfaces">Mackie Onyx Producer 2-2</a></li>
+                <li><a href="https://global.sennheiser-hearing.com/products/hd-599-se">Sennheiser hd599SE</a></li>
+                <li><a href="https://en-de.sennheiser.com/audio-headphones-high-end-hd-558">Sennheiser hd558</a></li>
+                <li><a href="https://www.amazon.com/Microphone-Condenser-Recording-Streaming-669B/dp/B06XCKGLTP">FIFINE K669B</a></li>
+            </ul>
+        </div>
     </section>
 
     <footer>
         <p><a href="https://www.mbnq.pl/">https://www.mbnq.pl/ 2024</a></p>
     </footer>
+
+    <script>
+        function toggleSection(sectionId) {
+            var sectionContent = document.getElementById(sectionId);
+            if (sectionContent.style.display === "block" || sectionContent.style.display === "") {
+                sectionContent.style.display = "none";
+            } else {
+                sectionContent.style.display = "block";
+            }
+        }
+    </script>
 </body>
 </html>
